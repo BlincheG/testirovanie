@@ -5,3 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+paperclip = Rails.root + 'app' + 'assets' + 'images'
+
+cafe = Shop.create(name: "Империя пиццы", description: "Лучшая пицца в городе", image:File.new(paperclip + "imperia.jpg"))
+food = Food.create(name: "Пицца чили", 
+				   description: "Cыр, томатный соус, копченое куриное филе, грудинка варёно-копчёная, соус «сhipotle», помидоры черри, шпинат, орегано. осторожно: вызывает привыкание!", 
+				   price: 500, 
+				   image:File.new(paperclip + "chilli.jpg"), 
+				   shop_id: 1)
+food3 = Food.create(name: "Пицца чили", 
+				   description: "Cыр, томатный соус, копченое куриное филе, грудинка варёно-копчёная, соус «сhipotle», помидоры черри, шпинат, орегано. осторожно: вызывает привыкание!", 
+				   price: 500, 
+				   image:File.new(paperclip + "chilli.jpg"), 
+				   shop_id: 1)
+food2 = Food.create(name: "Пицца чили", 
+				   description: "Cыр, томатный соус, копченое куриное филе, грудинка варёно-копчёная, соус «сhipotle», помидоры черри, шпинат, орегано. осторожно: вызывает привыкание!", 
+				   price: 500, 
+				   image:File.new(paperclip + "chilli.jpg"), 
+				   shop_id: 1)

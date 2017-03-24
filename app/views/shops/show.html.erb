@@ -1,0 +1,19 @@
+<h1 align="center"><%= @shop.description %></h1>
+<br>
+<div class="row">
+		<% @foods.each do |food| %>
+	<div class="col-md-4">
+			<strong>
+				<p align="center"><%= image_tag food.image.url(:medium) %></p>
+				<p align="center"><%= food.name %></p>
+				<p align="center"><%= food.description %></p>
+				<p align="center"><%= food.price %></p>
+			</strong>
+				<%= form_for CartItem.new do |f| %>
+				      <%= f.hidden_field :food_id, value: food.id %>
+      				  <%= f.hidden_field :cart_id, value: @cart.id %>
+      				  <%= f.number_field :count, value: 1 %>
+				<%= f.submit 'Заказать', class: 'btn btn-danger' %>
+			<% end %>
+	</div>
+		<% end %>

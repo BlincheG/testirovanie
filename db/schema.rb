@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170324110411) do
+ActiveRecord::Schema.define(version: 20170324150342) do
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
+    t.string   "author_type"
+    t.integer  "author_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  end
 
   create_table "cart_items", force: :cascade do |t|
     t.string   "name"
@@ -19,7 +33,18 @@ ActiveRecord::Schema.define(version: 20170324110411) do
     t.integer  "food_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "cart_id"
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["food_id"], name: "index_cart_items_on_food_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "shop_id"
+    t.index ["shop_id"], name: "index_carts_on_shop_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "foods", force: :cascade do |t|
