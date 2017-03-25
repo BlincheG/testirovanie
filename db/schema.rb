@@ -28,11 +28,11 @@ ActiveRecord::Schema.define(version: 20170324150342) do
 
   create_table "cart_items", force: :cascade do |t|
     t.string   "name"
-    t.integer  "count"
+    t.integer  "count",      default: 1
     t.decimal  "price"
     t.integer  "food_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "cart_id"
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["food_id"], name: "index_cart_items_on_food_id"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20170324150342) do
     t.string   "name"
     t.string   "phone"
     t.string   "adress"
+    t.boolean  "admin"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "email",                  default: "", null: false

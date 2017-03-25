@@ -24,3 +24,5 @@ food2 = Food.create(name: "Пицца чили",
 				   price: 500, 
 				   image:File.new(paperclip + "chilli.jpg"), 
 				   shop_id: 1)
+
+admin =  User.create(name: 'BlincheG', phone: '0553 450246', adress: 'Sydykova 258', email: 'blinchegg@gmail.com', password: 'qweqwe', password_confirmation: 'qweqwe', admin: true)

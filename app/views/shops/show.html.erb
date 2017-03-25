@@ -9,11 +9,50 @@
 				<p align="center"><%= food.description %></p>
 				<p align="center"><%= food.price %></p>
 			</strong>
+			<% if user_signed_in? %>
 				<%= form_for CartItem.new do |f| %>
 				      <%= f.hidden_field :food_id, value: food.id %>
       				  <%= f.hidden_field :cart_id, value: @cart.id %>
+      				  <%= f.hidden_field :price, value: food.price %>
+      				  <%= f.hidden_field :name, value: food.name %>
       				  <%= f.number_field :count, value: 1 %>
 				<%= f.submit 'Заказать', class: 'btn btn-danger' %>
 			<% end %>
+			<% end %>
+
 	</div>
+		<% end %>
+		<% if current_user %>
+			
+        <div id="cartStyle" class="col-sm-3">
+				<h3 align="center">Carts from: <%= current_user.name %></h3>
+				<table class="table">
+					<tr id="textStyle">
+						<th>Name</th>
+						<th>Quantity</th>
+						<th>Summ</th>
+						<th>Delete</th>
+					</tr>
+
+					<% current_user.carts.each do |cart| %>
+						<% cart.cart_items.each do |item| %>
+						<tr id="textStyle2" align="center" >
+							<td valign="baseline"><%= item.name %></td>
+							<td><%= item.count %></td>
+							<td><%= item.total_price %> $</td>
+							<td><%= link_to "", cart_item_path(item), method: :delete,  class: 'glyphicon glyphicon-floppy-remove' %></td>
+						</tr>
+						<% end %>
+					<% end %>
+				</table>
+				<strong id="textStyle">
+				TOTAL PRICE FROM CART: <%= current_user.total_order_price %> $
+				</strong>
+				<div style="margin:10px; padding:0px;">
+					<%= link_to 'Оформить заказ',  carts_path, class: 'btn btn-primary' %>
+				</div>
+				<div style="margin:10px; padding:0px;">
+					<%= link_to 'Очистить корзину',  carts_path, class: 'btn btn-danger' %>
+				</div>
+			</div>
 		<% end %>
