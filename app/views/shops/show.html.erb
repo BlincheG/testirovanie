@@ -16,7 +16,7 @@
       				  <%= f.hidden_field :price, value: food.price %>
       				  <%= f.hidden_field :name, value: food.name %>
       				  <%= f.number_field :count, value: 1 %>
-				<%= f.submit 'Заказать', class: 'btn btn-danger' %>
+				<%= f.submit 'Заказать', class: "btn btn-danger product#{food.id}" %>
 			<% end %>
 			<% end %>
 
@@ -39,14 +39,14 @@
 						<tr id="textStyle2" align="center" >
 							<td valign="baseline"><%= item.name %></td>
 							<td><%= item.count %></td>
-							<td><%= item.total_price %> $</td>
+							<td><%= item.total_price %> Сом</td>
 							<td><%= link_to "", cart_item_path(item), method: :delete,  class: 'glyphicon glyphicon-floppy-remove' %></td>
 						</tr>
 						<% end %>
 					<% end %>
 				</table>
 				<strong id="textStyle">
-				TOTAL PRICE FROM CART: <%= current_user.total_order_price %> $
+				TOTAL PRICE FROM CART: <%= current_user.total_order_price %> Сом
 				</strong>
 				<div style="margin:10px; padding:0px;">
 					<%= link_to 'Оформить заказ',  carts_path, class: 'btn btn-primary' %>
