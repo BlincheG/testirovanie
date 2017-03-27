@@ -29,8 +29,7 @@ class CartItemsController < ApplicationController
     unless @cart_item 
       @cart_item = CartItem.new(cart_item_params)
       @cart_item.save
-        format.html { redirect_to :back, notice: 'Cart item was successfully created.' }
-        format.json { render :show, status: :created, location: @cart_item }
+      redirect_to :back
     else
       # @cart_item.update_attribute(count, params[:cart_item][:count])
       @cart_item.count += params[:cart_item][:count].to_i

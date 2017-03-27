@@ -25,6 +25,9 @@
       <ul class="nav navbar-nav">
         <li><a href="#">About</a></li>
         <li><a href="#">Contacts</a></li>
+        <% if user_signed_in? %>
+          <li><%= link_to 'Admin', admin_dashboard_path %></li>
+        <% end %>
       </ul>
       <ul class="navbar-nav navbar-right">
         <% if user_signed_in? %>
